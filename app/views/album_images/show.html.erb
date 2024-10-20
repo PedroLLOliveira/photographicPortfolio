@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @album_image %>
+
+<div>
+  <%= link_to "Edit this album image", edit_album_image_path(@album_image) %> |
+  <%= link_to "Back to album images", album_images_path %>
+
+  <%= button_to "Destroy this album image", @album_image, method: :delete %>
+</div>
