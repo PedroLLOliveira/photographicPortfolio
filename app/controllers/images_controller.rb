@@ -8,6 +8,10 @@ class ImagesController < ApplicationController
 
   # GET /images/1 or /images/1.json
   def show
+    respond_to do |format|
+      format.html # Renderizar a view padrão
+      format.json { render json: @image.as_json.merge(file_url: url_for(@image.file)) }
+    end
   end
 
   # GET /images/new
@@ -65,6 +69,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:file_path, :title, :description, :uploaded_at, :user_id)
+      params.require(:image).permit(:title, :description, :uploaded_at, :user_id, :file)
     end
 end

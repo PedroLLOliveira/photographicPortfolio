@@ -2,6 +2,15 @@
 
 <%= render @image %>
 
+<h2><%= @image.title %></h2>
+<p><%= @image.description %></p>
+
+<% if @image.file.attached? %>
+  <%= image_tag url_for(@image.file) %>
+<% else %>
+  <p>No image uploaded.</p>
+<% end %>
+
 <div>
   <%= link_to "Edit this image", edit_image_path(@image) %> |
   <%= link_to "Back to images", images_path %>

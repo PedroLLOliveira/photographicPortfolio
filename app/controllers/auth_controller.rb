@@ -1,6 +1,9 @@
 class AuthController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:login]
   require 'jwt'
 
+  def index 
+  end
   # POST /login
   def login
     user = User.find_by(email: params[:email])
